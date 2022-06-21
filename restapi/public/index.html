@@ -1,0 +1,59 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head> 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- The below script gives this error: "GET http://localhost:3000/index.js net::ERR_ABORTED 404 (Not Found)"" -->
+    <!-- <script src="index.js"></script> -->
+    <style>
+        body { padding: 10px;}  
+    </style>
+</head>
+
+<body>
+
+<h1> Premier League 2011-2020 RESTAPI Routes </h1>
+
+<table class="table table-striped">
+    <thead> 
+        <tr> 
+            <th>Description</th><th>Route</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>* GET /teams</td>
+            <td><a href="/teams">/teams</a></td>
+        </tr>
+        <tr>
+            <td>* GET /teams/ARS</td>
+            <td><a href="/teams/ARS">/teams/ARS</a></td>
+        </tr>
+        <tr>
+            <td>* GET /teamstats</td>
+            <td><a href="/teamstats">/teamstats</a></td>
+        </tr>
+        <tr>
+            <td>* GET /matches</td>
+            <td><a href="/matches">/matches</a></td>
+        </tr>
+        <tr>
+            <td>* GET /seasons</td>
+            <td><a href="/seasons">/seasons</a></td>
+        </tr>
+        <tr>
+            <td>* GET /summary</td>
+            <td><a href="/summary">/summary</a></td>
+        </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

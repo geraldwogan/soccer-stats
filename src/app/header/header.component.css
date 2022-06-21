@@ -1,0 +1,7 @@
+.row {
+    width: 100%;
+    display: flex; /* note that flexbox is not supported in IE10 and earlier versions. */
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}

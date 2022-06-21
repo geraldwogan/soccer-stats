@@ -1,0 +1,105 @@
+<h1>Shots</h1>
+<hr>
+<div *ngIf="shots.length>0; then shotList else NOshotList"></div>
+
+<ng-template #shotList>
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>TEAM</th><th>PLAYED</th>
+                <th>GF/M</th><th>GA/M</th><th>GDIFF/M</th> 
+                <th>SF/M</th><th>SA/M</th><th>SDIFF/M</th> 
+                <th>SoTF/M</th><th>SoTA/M</th><th>SoTDIFF/M</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let shot of shots; let i = index;"> <!--foreach shot in shots-->
+                <td>{{shot.team}}</td>
+                <td>{{shot.played}}</td>
+                <td>{{shot.totalGoalsFor / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalGoalsAgainst / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalGoalsNet / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalShotsFor / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalShotsAgainst / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalShotsNet / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalShotsOnTargetFor / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalShotsOnTargetAgainst / shot.played | number: '1.1-1'}}</td>
+                <td>{{shot.totalShotsOnTargetNet / shot.played | number: '1.1-1'}}</td>
+            </tr>
+        </tbody>
+    
+    </table>
+</ng-template>
+
+<ng-template #NOshotList>
+</ng-template>
+<h2>Goals For & Against / Match</h2>
+<svg height="1030" width="1030" style="background-color:rgb(248, 248, 248)">
+    <text x="40" y="40" >Goals Against</text>
+    <text x="5" y="15">3</text>
+    <text x="5" y="500">1.5</text>
+    <text x="15" y="1000">0</text>
+    <line x1="30" y1="0" x2="30" y2="1000" style="stroke:black;stroke-width:1" />
+    <text x="940" y="990" >Goals For</text>
+    <text x="35" y="1015">0</text>
+    <text x="500" y="1015">1.5</text>
+    <text x="1020" y="1015">3</text>
+    <line x1="30" y1="1000" x2="1030" y2="1000" style="stroke:black;stroke-width:1" />
+    <ng-container *ngFor="let shot of shots; let i = index;">
+        <circle [attr.id]="shot.team" [attr.tag]="shot.totalGoalsFor / shot.played"
+        [attr.name]="shot.totalGoalsAgainst / shot.played"
+        [attr.cx]="(shot.totalGoalsFor / shot.played) *350"
+        [attr.cy]="1000-(shot.totalGoalsAgainst / shot.played) *350"
+        stroke="black" stroke-width="1" fill="gray" r="25"   />    
+        <text [attr.y]="+5+1000-(shot.totalGoalsAgainst / shot.played) *350"
+        [attr.x]="(shot.totalGoalsFor / shot.played) *350" fill="white" text-anchor="middle"
+        >{{shot.teamCode}}</text>
+    </ng-container>
+</svg>
+<h2>Shots For & Against / Match</h2>
+<svg height="1030" width="1030" style="background-color:rgb(248, 248, 248)">
+    <text x="40" y="40" >Shots Against</text>
+    <text x="5" y="15">20</text>
+    <text x="5" y="500">10</text>
+    <text x="15" y="1000">0</text>
+    <line x1="30" y1="0" x2="30" y2="1000" style="stroke:black;stroke-width:1" />
+    <text x="940" y="990" >Shots For</text>
+    <text x="35" y="1015">0</text>
+    <text x="500" y="1015">10</text>
+    <text x="1012" y="1015">20</text>
+    <line x1="30" y1="1000" x2="1030" y2="1000" style="stroke:black;stroke-width:1" />
+    <ng-container *ngFor="let shot of shots; let i = index;">
+        <circle [attr.id]="shot.team" [attr.tag]="shot.totalShotsFor / shot.played"
+        [attr.name]="shot.totalShotsAgainst / shot.played"
+        [attr.cx]="(shot.totalShotsFor / shot.played) *50"
+        [attr.cy]="1000-(shot.totalShotsAgainst / shot.played) *50"
+        stroke="black" stroke-width="1" fill="gray" r="25"   />    
+        <text [attr.y]="+5+1000-(shot.totalShotsAgainst / shot.played) *50"
+        [attr.x]="(shot.totalShotsFor / shot.played) *50" fill="white" text-anchor="middle"
+        >{{shot.teamCode}}</text>
+    </ng-container>
+</svg>
+<h2>Shots On Target For & Against / Match</h2>
+
+<svg height="1030" width="1030" style="background-color:rgb(248, 248, 248)">
+    <text x="40" y="40" >Shots On Target Against</text>
+    <text x="5" y="15">10</text>
+    <text x="15" y="500">5</text>
+    <text x="15" y="1000">0</text>
+    <line x1="30" y1="0" x2="30" y2="1000" style="stroke:black;stroke-width:1" />
+    <text x="880" y="990" >Shots On Target For</text>
+    <text x="35" y="1015">0</text>
+    <text x="500" y="1015">5</text>
+    <text x="1012" y="1015">10</text>
+    <line x1="30" y1="1000" x2="1030" y2="1000" style="stroke:black;stroke-width:1" />
+    <ng-container *ngFor="let shot of shots; let i = index;">
+        <circle [attr.id]="shot.team" [attr.tag]="shot.totalShotsFor / shot.played"
+        [attr.name]="shot.totalShotsOnTargetAgainst / shot.played"
+        [attr.cx]="(shot.totalShotsOnTargetFor / shot.played) *100"
+        [attr.cy]="1000-(shot.totalShotsOnTargetAgainst / shot.played) *100"
+        stroke="black" stroke-width="1" fill="gray" r="25"   />    
+        <text [attr.y]="+5+1000-(shot.totalShotsOnTargetAgainst / shot.played) *100"
+        [attr.x]="(shot.totalShotsOnTargetFor / shot.played) *100" fill="white" text-anchor="middle"
+        >{{shot.teamCode}}</text>
+    </ng-container>
+</svg>

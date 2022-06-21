@@ -1,0 +1,34 @@
+<h1>Team Stats Admin</h1>
+<!-- If the array from the .ts file has values(matches) in it 
+then show matchList template, else show NOmatchlist template-->
+<div *ngIf="teamStatsAdmin.length>0; then teamList else NOteamList"></div>
+
+<ng-template #teamList>
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>TEAM</th><th>HomeGoalFor</th><th>HomeGoalAgs</th> 
+                <th>AwayGoalFor</th><th>AwayGoalAgs</th><th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teamStatsAdmin; let i = index;"> <!--foreach match in matchs-->
+                <td> 
+                    <img src="../../assets/images/{{team.teamCode | lowercase}}.png" alt="Club Badge" height="25"> 
+                     {{team.team}}
+                </td>                
+                <td>{{team.hGoalsFor}}</td>
+                <td>{{team.hGoalsAgainst}}</td>
+                <td>{{team.aGoalsFor}}</td>
+                <td>{{team.aGoalsAgainst}}</td>
+                <td>
+                    <a href="teamAdmin/{{team.teamCode}}"> Update...</a>
+                </td>
+            </tr>
+        </tbody>
+    
+    </table>
+</ng-template>
+
+<ng-template #NOteamList>
+</ng-template>

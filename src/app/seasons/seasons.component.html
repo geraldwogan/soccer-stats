@@ -1,0 +1,35 @@
+<h1>Seasons</h1>
+<hr>
+<!-- <div *ngIf="teamstats.length>0; then teamList else NOteamList"></div> -->
+Team: <select (change)="teamFilter($event)">
+    <option *ngFor="let team of teamNames" [value]=team.name >{{team.name}}</option>
+</select>
+<br>
+<hr>
+<!-- <ng-template #teamList> -->
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>SEASON</th><th>PLAYED</th><th>PTS</th> 
+                <th>W</th><th>D</th><th>L</th> 
+                <th>GF</th><th>GA</th><th>GDIFF</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teams; let i = index;">
+                <td>{{team.season}}</td>
+                <td>{{team.played}}</td>
+                <td>{{team.wins * 3 + team.draws }}</td>
+                <td>{{team.wins}}</td>
+                <td>{{team.draws}}</td>
+                <td>{{team.losses}}</td>
+                <td>{{team.gf * 1}}</td>
+                <td>{{team.ga * 1}}</td>
+                <td>{{team.gf-team.ga}}</td>
+            </tr>
+        </tbody>
+    </table>
+<!-- </ng-template> -->
+
+<ng-template #NOteamList>
+</ng-template>

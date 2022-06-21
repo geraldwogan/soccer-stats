@@ -1,0 +1,31 @@
+<h1>Teams</h1>
+
+<!-- If the teams array from the .ts file has values(teams) in it 
+then show teamList template, else show NOteamlist template-->
+<div *ngIf="teams.length>0; then teamList else NOteamList"></div>
+<ng-template #teamList>
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>#</th><th>NAME</th><th>STADIUM</th><th>CAPACITY</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teams; let i = index;"> <!--foreach team in teams-->
+                <td>{{i+1}}</td>
+                <td> 
+                    <img src="../../assets/images/{{team.teamcode | lowercase}}.png" alt="Club Badge" height="25"> 
+                    {{team.name}}
+                </td>
+                <td>
+                    <a href="https://www.google.com/maps/place/{{team.latitude}},{{team.longitude}}">{{team.stadium}}</a>
+                </td>
+                <td>{{team.capacity | number: '2.'}}</td> <!-- pipe to add commas-->
+            </tr>
+        </tbody>
+    
+    </table>
+</ng-template>
+
+<ng-template #NOteamList>
+</ng-template>

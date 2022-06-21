@@ -1,0 +1,35 @@
+<div *ngIf="team.length>0; then teamList else NOteamList"></div>
+<ng-template #teamList>
+    <h1>{{team[0].team}}</h1>
+    <img src="../../assets/images/{{team[0].teamCode | lowercase}}.png" alt="Club Badge"> 
+    <br><br>
+
+    <form ngForm #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <div class="form-group">
+            <label for="hGoalsFor">Home Goals For</label>
+            <input [(ngModel)]="team[0].hGoalsFor" name="hGoalsFor" id="hGoalsFor" type="number" class="form-control" min="0" oninput="validity.valid||(value='');" required>
+        </div>
+
+        <div class="form-group">
+            <label for="hGoalsAgainst">Home Goals Against</label>
+            <input [(ngModel)]="team[0].hGoalsAgainst" name="hGoalsAgainst" id="hGoalsAgainst" type="number" class="form-control" min="0" oninput="validity.valid||(value='');" required>
+        </div>
+
+        <div class="form-group">
+            <label for="aGoalsFor">Away Goals For</label>
+            <input [(ngModel)]="team[0].aGoalsFor" name="aGoalsFor" id="aGoalsFor" type="number" class="form-control" min="0" oninput="validity.valid||(value='');" required>
+        </div>
+
+        <div class="form-group">
+            <label for="aGoalsAgainst">Away Goals Against</label>
+            <input [(ngModel)]="team[0].aGoalsAgainst" name="aGoalsAgainst" id="aGoalsAgainst" type="number" class="form-control" min="0" oninput="validity.valid||(value='');" required>
+        </div>
+
+        <button class="btn btn-primary">Update</button>
+
+    </form>
+</ng-template>
+<ng-template #NOteamList>
+</ng-template>
+

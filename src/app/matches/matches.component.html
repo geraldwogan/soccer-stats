@@ -1,0 +1,53 @@
+<h1>Matches 2011-2020</h1>
+<hr>
+<table width=100% >
+    <tr>
+        <td>
+            <select (change)="seasonFilter($event)" >
+                <option value="All">All</option>
+                <option *ngFor="let season of seasons" [value]=season >{{season}}</option>
+            </select>
+        </td>
+        <td>
+            <select (change)="teamFilter($event)">
+                <option value="All">All</option>
+                <option *ngFor="let name of teamNames" [value]=name >{{name}}</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<br>
+<!-- If the array from the .ts file has values(matches) in it 
+then show matchList template, else show NOmatchlist template-->
+<div *ngIf="matches.length>0; then matchList else NOmatchList"></div>
+
+<ng-template #matchList>
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>SEASON</th><th>DATE</th><th>HOME TEAM</th> 
+                <th></th><th>AWAY TEAM</th><th>REFEREE</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let match of matches; let i = index;"> <!--foreach match in matchs-->
+                <td>{{match.season}}</td>
+                <td>{{match.date | date: 'EEEE, MMMM d, y'}}</td>
+                <td> 
+                    <img src="../../assets/images/{{match.HomeTeamCode | lowercase}}.png" alt="Club Badge" height="25"> 
+                    {{match.HomeTeam}}
+                </td>
+                <td>{{match.FTHG}}-{{match.FTAG}}</td>
+                <td> 
+                    <img src="../../assets/images/{{match.AwayTeamCode | lowercase}}.png" alt="Club Badge" height="25"> 
+                    {{match.AwayTeam}}
+                </td>
+                <td>{{match.referee}}</td>
+            </tr>
+        </tbody>
+    
+    </table>
+</ng-template>
+
+<ng-template #NOmatchList>
+</ng-template>

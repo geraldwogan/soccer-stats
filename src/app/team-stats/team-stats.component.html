@@ -1,0 +1,52 @@
+<h1>Teams Stats 2011-2020</h1>
+<!-- If the array from the .ts file has values(teams) in it 
+then show teamList template, else show NOteamlist template-->
+<div *ngIf="teamstats.length>0; then teamList else NOteamList"></div>
+
+<ng-template #teamList>
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>NAME</th><th>PLAYED</th><th>WON</th> 
+                <th>DRAWN</th><th>LOST</th><th>WIN%</th> 
+                <th>GLS FOR</th><th>GLS AGT</th><th>GLS DIF</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teamstats; let i = index;"> <!--foreach team in teams-->
+                <td> 
+                    <img src="../../assets/images/{{team.teamCode | lowercase}}.png" alt="Club Badge" height="25"> 
+                    <a href="team/{{team.teamCode}}"> {{team.team}}</a>
+                </td>
+                <td>{{team.played}}</td>
+                <td>{{team.w}}</td>
+                <td>{{team.d}}</td>
+                <td>{{team.l}}</td>
+                <td>{{team.w/team.played | number: '1.2-2'}}</td><!--numberValue | number: {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}-->
+                <td>{{team.totalGoalsFor}}</td>
+                <td>{{team.totalGoalsAgainst}}</td>
+                <td>{{team.totalGoalsNet}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<ng-template #NOteamList>
+</ng-template>
+<br>
+<svg height="820" width="1270" style="background-color:rgb(248, 248, 248)">
+    <text x="0" y="7">1.0</text>
+    <text x="0" y="400">0.5</text>
+    <text x="5" y="800">0</text>
+    <text x="470" y="50" style="font-size:30;font-family:Sans-serif">Team Win% 2011-2020</text>
+    <line x1="15" y1="0" x2="15" y2="800" style="stroke:black;stroke-width:1" />
+    <line x1="15" y1="800" x2="1399" y2="800" style="stroke:black;stroke-width:1" />
+    <ng-container *ngFor="let team of teamstats; let i = index;">
+        <rect fill="black" 
+        [attr.y]="800-(team.w/team.played)*800" [attr.x]="i*35+15" 
+        width=25 [attr.height]="(team.w/team.played)*800"></rect>
+        <text [attr.y]="810-(team.w/team.played)*800" [attr.x]="i*35+16" fill="white" style="font-size:10;font-family:Consolas">{{team.w/team.played | number: '1.2-2'}}</text>
+        <text y=814 [attr.x]="i*35+15" style="font-size:15;font-family:Consolas">{{team.teamCode}}</text>
+    </ng-container>
+</svg>
+<br><br>

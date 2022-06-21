@@ -1,0 +1,110 @@
+<h1>{{team[0].team}}</h1>
+<img src="../../assets/images/{{team[0].teamCode | lowercase}}.png" alt="Club Badge"> 
+<br><br>
+<svg width="750" height="150" style="padding-left:10px">
+    <g>
+        <rect attr.fill="black" width=125 height=120></rect>
+        <text x="62.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{team[0].played / 38}}</text>
+        <text x="62.5" y="110" text-anchor="middle" fill=white style="font-size:22;">SEASONS</text>    
+    </g>
+    <g>
+        <rect attr.fill="black" x=140 y=0 width=125 height=120></rect>
+        <text x="202.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{team[0].played}}</text>
+        <text x="202.5" y="110" text-anchor="middle" fill=white style="font-size:22;">MATCHES</text>
+    </g>
+    <g>
+        <rect attr.fill="black" x=280 y=0 width=125 height=120></rect>
+        <text x="342.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{team[0].w}}</text>
+        <text x="342.5" y="110" text-anchor="middle" fill=white style="font-size:22;">WON</text>
+    </g>
+    <g>
+        <rect attr.fill="black" x=420 y=0 width=125 height=120></rect>
+        <text x="482.2" y="75" text-anchor="middle" fill=white style="font-size:36;">{{team[0].d}}</text>
+        <text x="482.5" y="110" text-anchor="middle" fill=white style="font-size:22;">DRAWN</text>
+    </g>
+    <g>
+        <rect attr.fill="black" x=560 y=0 width=125 height=120></rect>
+        <text x="622.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{team[0].l}}</text>
+        <text x="622.5" y="110" text-anchor="middle" fill=white style="font-size:22;">LOST</text>
+    </g>
+
+</svg>
+<h1>Attacking & Defensive Shooting Stats</h1>
+
+<table class="table table-striped">
+    <thead> 
+        <tr> 
+            <th>Metric</th><th>For</th><th>Against</th><th>+-DIFF</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr> 
+            <td>Goals</td>
+            <td>{{team[0].totalGoalsFor | number}}</td>
+            <td>{{team[0].totalGoalsAgainst | number}}</td>
+            <td>{{team[0].totalGoalsNet | number}}</td>
+        </tr>
+        <tr> 
+            <td>Goals per Match (Goals/Matches)</td>
+            <td>{{team[0].totalGoalsFor / team[0].played | number: '1.1-1'}}</td>
+            <td>{{team[0].totalGoalsAgainst / team[0].played | number: '1.1-1'}}</td>
+            <td>{{team[0].totalGoalsNet / team[0].played | number: '1.1-1'}}</td>
+        </tr>
+        <tr> 
+            <td>Shots</td>
+            <td>{{team[0].totalShotsFor | number}}</td>
+            <td>{{team[0].totalShotsAgainst | number}}</td>
+            <td>{{team[0].totalShotsNet | number}}</td>
+        </tr>
+        <tr> 
+            <td>Shots Per Matches (Shots/Matches)</td>
+            <td>{{team[0].totalShotsFor / team[0].played | number: '1.1-1'}}</td>
+            <td>{{team[0].totalShotsAgainst / team[0].played | number: '1.1-1'}}</td>
+            <td>{{team[0].totalShotsNet / team[0].played | number: '1.1-1'}}</td>
+        </tr>
+        <tr> 
+            <td>Shots on Target</td>
+            <td>{{team[0].totalShotsOnTargetFor | number}}</td>
+            <td>{{team[0].totalShotsOnTargetAgainst | number}}</td>
+            <td>{{team[0].totalShotsOnTargetNet | number}}</td>
+        </tr>
+        <tr> 
+            <td>Shots on Target per Match (Shots/Matches)</td>
+            <td>{{team[0].totalShotsOnTargetFor / team[0].played | number: '1.1-1'}}</td>
+            <td>{{team[0].totalShotsOnTargetAgainst / team[0].played | number: '1.1-1'}}</td>
+            <td>{{team[0].totalShotsOnTargetNet / team[0].played | number: '1.1-1'}}</td>
+        </tr>
+        <tr> 
+            <td>Scoring Efficiency (Goals/Shots)</td>
+            <td>{{team[0].totalGoalsFor / team[0].totalShotsFor * 100 | number: '1.1-1'}}%</td>
+            <td>{{team[0].totalGoalsAgainst / team[0].totalShotsAgainst * 100 | number: '1.1-1'}}%</td>
+            <td>{{(team[0].totalGoalsFor / team[0].totalShotsFor * 100)-(team[0].totalGoalsAgainst / team[0].totalShotsAgainst * 100) | number: '1.1-1'}}%</td>
+        </tr>
+        <tr> 
+            <td>Shooting Accuracy (Shots on Target/Shots)</td>
+            <td>{{team[0].totalShotsOnTargetFor / team[0].totalShotsFor * 100 | number: '2.1-1'}}%</td>
+            <td>{{team[0].totalShotsOnTargetAgainst / team[0].totalShotsAgainst * 100 | number: '2.1-1'}}%</td>
+            <td>{{(team[0].totalShotsOnTargetFor / team[0].totalShotsFor * 100)-(team[0].totalShotsOnTargetAgainst / team[0].totalShotsAgainst * 100) | number: '1.1-1'}}%</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<svg height="520" width="600" style="background-color:rgb(248, 248, 248)">
+    <text x="0" y="7">1.0</text>
+    <text x="0" y="250">0.5</text>
+    <text x="5" y="500">0</text>
+    <text x="140" y="30" style="font-size:30;font-family:Sans-serif">Team Win% 2011-2020</text>
+    <line x1="15" y1="0" x2="15" y2="500" style="stroke:black;stroke-width:1" />
+    <line x1="15" y1="500" x2="580" y2="500" style="stroke:black;stroke-width:1" />
+    <ng-container *ngFor="let team of teamWinPercs; let i = index;">
+        <rect fill="black" width=50 
+            [attr.x]="i*55+22" 
+            [attr.y]="500-team.winPerc*5" 
+            [attr.height]="team.winPerc*5">
+        </rect>
+        <text [attr.y]="515-team.winPerc*5" [attr.x]="i*55+30" fill="white" style="font-size:16;font-family:Consolas">{{team.winPerc / 100 | number: '1.2-2'}}</text>
+        <text y=510 [attr.x]="i*55+22">{{team.season}}</text>
+    </ng-container>
+</svg>
+<br><br>

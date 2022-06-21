@@ -1,0 +1,75 @@
+<div *ngIf="homeStats.length>0; then teamList else NOteamList"></div>
+
+<ng-template #teamList>
+    <h1>Overall</h1>
+    <svg width="750" height="140" style="padding-left:10px">
+        <g>
+            <rect attr.fill="black" x=0 y=0 text-anchor="middle" width=125 height=120></rect>
+            <text x="62.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].noOfSeasons}}</text>
+            <text x="62.5" y="110" text-anchor="middle" fill=white style="font-size:22;">SEASONS</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=140 y=0 width=125 height=120></rect>
+            <text x="202.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].noOfMatches | number: '2.'}}</text>
+            <text x="202.5" y="110" text-anchor="middle" fill=white style="font-size:22;">MATCHES</text>
+        </g>
+        <g>
+             <rect attr.fill="black" text-anchor="middle" x=280 y=0 width=125 height=120></rect>
+            <text x="342.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].noOfTeams}}</text>
+            <text x="342.5" y="110" text-anchor="middle" fill=white style="font-size:22;">TEAMS</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=420 y=0 width=125 height=120></rect>
+            <text x="482.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].noOfReferees}}</text>
+            <text x="482.5" y="110" text-anchor="middle" fill=white style="font-size:22;">REFEREES</text>
+        </g>
+    </svg>
+    
+    <h1>Attack</h1>
+    <svg width="750" height="140" style="padding-left:10px">
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=0 y=0 width=125 height=120></rect>
+            <text x="62.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].goalsScored | number: '2.'}}</text>
+            <text x="62.5" y="110" text-anchor="middle" fill=white style="font-size:22;">GOALS</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=140 y=0 width=125 height=120></rect>
+            <text x="202.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].goalsScored / homeStats[0].noOfMatches | number: '1.2-2'}}</text>
+            <text x="202.5" y="110" text-anchor="middle" fill=white style="font-size:22;">GLS/MATCH</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=280 y=0 width=125 height=120></rect>
+            <text x="342.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].totalShotsFor | number: '2.'}}</text>
+            <text x="342.5" y="110" text-anchor="middle" fill=white style="font-size:22;">SHOTS</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=420 y=0 width=125 height=120></rect>
+            <text x="482.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].totalShotsFor / homeStats[0].noOfMatches | number: '1.2-2'}}</text>
+            <text x="482.5" y="110" text-anchor="middle" fill=white style="font-size:22;">STS/MATCH</text>
+        </g>
+    </svg>
+    
+    <h1>Defense</h1>
+    <svg width="750" height="140" style="padding-left:10px">
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=0 y=0 width=125 height=120></rect>
+            <text x="62.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].homeCleanSheets + homeStats[0].awayCleanSheets | number: '2.'}}</text>
+            <text x="62.5" y="110" text-anchor="middle" fill=white style="font-size:22;">CLN SHEETS</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=140 y=0 width=125 height=120></rect>
+            <text x="202.5" y="25" text-anchor="middle" fill=white style="font-size:24;">{{(100 / (homeStats[0].homeCleanSheets + homeStats[0].awayCleanSheets)) * homeStats[0].homeCleanSheets | number: '1.0-0'}}%</text>
+            <text x="202.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].homeCleanSheets | number: '2.'}}</text>
+            <text x="202.5" y="110" text-anchor="middle" fill=white style="font-size:22;">HOME CLN</text>
+        </g>
+        <g>
+            <rect attr.fill="black" text-anchor="middle" x=280 y=0 width=125 height=120></rect>
+            <text x="342.5" y="25" text-anchor="middle" fill=white style="font-size:24;">{{(100 / (homeStats[0].homeCleanSheets + homeStats[0].awayCleanSheets)) * homeStats[0].awayCleanSheets | number: '1.0-0'}}%</text>
+            <text x="342.5" y="75" text-anchor="middle" fill=white style="font-size:36;">{{homeStats[0].awayCleanSheets | number: '2.'}}</text>
+            <text x="342.5" y="110" text-anchor="middle" fill=white style="font-size:22;">AWAY CLN</text>
+        </g>
+    </svg>
+</ng-template>
+
+<ng-template #NOteamList>
+</ng-template>
