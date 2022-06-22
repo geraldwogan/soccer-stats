@@ -15,7 +15,7 @@ export class TeamsComponent implements OnInit {
     service.getTeams() //using '../services/global.service';
       .subscribe(response => {
       console.log(response);
-      // this.teams = response;
+      this.teams = response;
       })
   }
 

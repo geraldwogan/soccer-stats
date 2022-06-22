@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "a2": {
+    "soccer-stats": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/a2",
+            "outputPath": "dist/soccer-stats",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "a2:build"
+            "browserTarget": "soccer-stats:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "a2:build:production"
+              "browserTarget": "soccer-stats:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "a2:build"
+            "browserTarget": "soccer-stats:build"
           }
         },
         "test": {
@@ -109,16 +109,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "a2:serve"
+            "devServerTarget": "soccer-stats:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "a2:serve:production"
+              "devServerTarget": "soccer-stats:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "a2"
+  "defaultProject": "soccer-stats"
 }
