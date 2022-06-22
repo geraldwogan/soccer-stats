@@ -1,4 +1,52 @@
-# A2
+# soccer-stats
+
+This is a college project from 2021.
+
+## Technogies Used
+- Typescript
+- HTML
+- CSS
+- Angular
+- Express (REST API)
+- MySQL (Server + Worbench)
+
+## Starter instructions for booting this up again a year later
+
+## Angular App
+https://angular.io/guide/setup-local#prerequisites
+
+- Install Node.js from here -> https://nodejs.org/en/download/
+Angular requires a relatively up-to-date LTS version of node. 
+
+- Install Node Package Manager (npm), this is already installed when Node.js is installed.
+
+- Install Angular with this command -> `npm install -g @angular/cli`
+
+- Create Angular app -> `ng new <app-name>` (Not needed as this is an existing project)
+
+- Write code for app (This was handled during my college module)
+
+- Run Angular app -> Navigate to directory in cmd (Angular calls this a Workspace, this is wherever you ran the inital `ng new <app-name>` command) and run -> `ng serve --open`
+
+## REST API
+
+- Install MySQL from here -> https://dev.mysql.com/downloads/windows/installer/8.0.html
+    - I installed Server and Workbench
+    - Server
+        - Configure this with legacy security (password = `root`)
+        - When installation and configuration is complete the server should automatically be running on the port you chose (I chose 3306, this is the default)
+    - Workbench
+        - Will automatically detect the above server. 
+        - Click into this and run your sql script (soccer-stats\restapi\model\epl20201.sql) to create all SQL resources.
+
+- Install Express: npm install express
+
+- Write index.js and other resources to use this restapi (Already written in project)
+
+- Navigate to restapi directory in cmd and run -> `node index.js` or preferably `nodemon index.js`
+
+## Old README.md - auto-generated
+------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
